@@ -16,5 +16,4 @@ public class LoginController {
         log.info("Login success");
         return Arrays.asList("Mazda","Toyota","Audi");
     }
-
 }
