@@ -16,4 +16,5 @@ public final class CardSpecification {
         return (root, query, cb) -> cb.equal(root.get(Card_.EN_VALUE), value);
     }
 
+
 }
