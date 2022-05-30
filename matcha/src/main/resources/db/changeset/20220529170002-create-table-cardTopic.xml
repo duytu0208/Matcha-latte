@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="tund" id="20220529170002-01">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="CARD_TOPIC"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="CARD_TOPIC">
+            <column name="ID" type="int" autoIncrement="true" incrementBy="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CARD_ID" type="INT"/>
+            <column name="TOPIC_ID" type="INT"/>
+        </createTable>
+
+        <sqlFile path="db/sql/20220529170002-data-table-cardTopic.sql"/>
+
+    </changeSet>
+
+</databaseChangeLog>

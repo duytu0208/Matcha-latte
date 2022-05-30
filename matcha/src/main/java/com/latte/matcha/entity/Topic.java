@@ -6,22 +6,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "TOPIC")
 public class Topic {
 
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "topic")
-    Set<CardTopic> cardTopics;
 }

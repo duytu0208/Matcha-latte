@@ -12,19 +12,18 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "CARD_TOPIC")
 public class CardTopic {
 
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "card_id")
-    Card card;
+    @Column(name = "CARD_ID")
+    private Long cardId;
 
-    @ManyToOne
-    @JoinColumn(name = "topic_id")
-    Topic topic;
-
+    @Column(name= "TOPIC_ID")
+    private Long topicId;
 
 }
