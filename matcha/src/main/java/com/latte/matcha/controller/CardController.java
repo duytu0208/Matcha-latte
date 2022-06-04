@@ -1,5 +1,6 @@
 package com.latte.matcha.controller;
 
+import com.latte.matcha.dto.CardDTO;
 import com.latte.matcha.entity.Card;
 import com.latte.matcha.services.CardService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ public class CardController {
     private CardService cardService;
 
     @GetMapping(path = "/cardsList")
-    public List<Card> getCards() {
+    public List<CardDTO> getCards() {
         log.info("Get card list");
         return cardService.getCards();
     }

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CardRepositoty extends JpaRepository<Card, Long>, JpaSpecificationExecutor<Card> {
+public interface CardRepository extends JpaRepository<Card, Integer>, JpaSpecificationExecutor<Card> {
 
 
 }

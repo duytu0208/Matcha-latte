@@ -17,13 +17,15 @@ public class CardTopic {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name = "CARD_ID")
-    private Long cardId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CARD_ID")
+    private Card card;
 
-    @Column(name= "TOPIC_ID")
-    private Long topicId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TOPIC_ID")
+    private Topic topic;
 
 }

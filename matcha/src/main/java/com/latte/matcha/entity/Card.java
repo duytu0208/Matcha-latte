@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -14,10 +16,13 @@ import javax.persistence.*;
 @Table(name = "CARD")
 public class Card {
 
+    @OneToMany(mappedBy = "card", fetch = FetchType.LAZY)
+    private List<CardTopic> cardTopicList;
+
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "EN_VALUE")
     private String enValue;

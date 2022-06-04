@@ -1,32 +1,37 @@
 package com.latte.matcha.services.Impl;
 
+import com.latte.matcha.dto.CardDTO;
 import com.latte.matcha.entity.Card;
-import com.latte.matcha.repository.CardRepositoty;
+import com.latte.matcha.repository.CardRepository;
 import com.latte.matcha.services.CardService;
 import com.latte.matcha.specification.CardSpecification;
-import com.latte.matcha.specification.Filter;
-import com.latte.matcha.specification.QueryOperator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CardServiceImpl implements CardService {
 
     @Autowired
-    private CardRepositoty cardRepositoty;
+    private CardRepository cardRepositoty;
 
     @Autowired
     private CardSpecification cardSpecification;
 
     @Override
-    public List<Card> getCards() {
+    public List<CardDTO> getCards() {
 
-        Specification conditions = Specification.where(CardSpecification.hasId(1L))
-                .and(CardSpecification.valueLike("02"));
+        List<Card> cards = cardRepositoty.findAll();
 
-        return cardRepositoty.findAll(conditions);
+        List<CardDTO> cardDTOList = cards.stream().map(obj -> {
+            CardDTO cardDTO = new CardDTO();
+            cardDTO.setCardId(obj.getId());
+
+            return cardDTO;
+        }).collect(Collectors.toList());
+
+        return cardDTOList;
     }
 }
